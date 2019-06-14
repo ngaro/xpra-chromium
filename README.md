@@ -28,9 +28,18 @@ You can also use this to run chromium locally in a container:
 
 ```
 docker run -d --net host -e DISPLAY=$DISPLAY --device /dev/snd \
--v $HOME/.Xauthority:/root/.Xauthority --rm garo/xpra-chromium \
-chromium-browser --no-sandbox
+-v $HOME/.Xauthority:/root/.Xauthority --rm garo/xpra-chromium
 ```
+
+## Wireshark https traffic sniffing
+
+Chromium is running with the sslkeylogfile option, which means that you can use it to decrypt the https traffic
+between the container and webservers. Include the option `-v /somewhere/on/your/host:/root/sslkeylogfile'.
+
+After the container starts run wireshark and in the preferences set `/somewhere/on/your/host` as the
+pre-master-secret log filename in Edit > Preferences > Protocols > SSL . All non-chromium traffic wil be
+filtered out by only logging the traffic on the docker0 interface and filtering on `not host 172.17.0.1`
+(Assuming 172.17.0.1 is the ip on your host of docker0)
 
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
