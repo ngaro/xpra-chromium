@@ -10,7 +10,7 @@ To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for 
 
 * Run the container:
 
-`docker run -d -p 12345:10000 --name xprachro garo/xpra-chromium`
+`docker run -d -p 12345:10000 --device /dev/snd --name xprachro garo/xpra-chromium`
 
 * Wait a couple of seconds for everything to start...
 
@@ -21,16 +21,6 @@ To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for 
 * Closing Chromium will also stop the container. With `docker start xprachro` it will start again.
 
 The environment variable `XPRA_PORT` is `10000` by default but can be changed to make xpra listen to another port.
-
-## Regular (local) usage
-
-You can also use this to run chromium locally in a container:
-
-```
-docker run -d --net host -e DISPLAY=$DISPLAY --device /dev/snd \
--v $HOME/.Xauthority:/root/.Xauthority --rm garo/xpra-chromium \
-chromium-browser --no-sandbox
-```
 
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
