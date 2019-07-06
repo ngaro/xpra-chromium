@@ -22,6 +22,16 @@ To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for 
 
 The environment variable `XPRA_PORT` is `10000` by default but can be changed to make xpra listen to another port.
 
+## Wireshark https traffic sniffing
+
+Chromium is running with the sslkeylogfile option, which means that you can use it to decrypt the https traffic
+between the container and webservers. Include the option `-v /somewhere/on/your/host:/root/sslkeylogfile'.
+
+After the container starts run wireshark and in the preferences set `/somewhere/on/your/host` as the
+pre-master-secret log filename in Edit > Preferences > Protocols > SSL . All non-chromium traffic wil be
+filtered out by only logging the traffic on the docker0 interface and filtering on `not host 172.17.0.1`
+(Assuming 172.17.0.1 is the ip on your host of docker0)
+
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
 
