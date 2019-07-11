@@ -4,6 +4,11 @@ This runs Chromium in Xpra so you can attach to it from different systems.
 
 Xpra allows you to use the speed of X-forwarding (a bit faster even) and the detach/attach possibilities of VNC.
 
+## Tags
+
+* [latest](https://github.com/ngaro/xpra-chromium/blob/master/Dockerfile) uses Ubuntu as base
+* [alpine](https://github.com/ngaro/xpra-chromium/blob/alpine/Dockerfile) uses Alpine as base
+
 ## XPRA Usage
 
 To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for clients that want to use it:
