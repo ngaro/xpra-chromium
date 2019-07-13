@@ -6,8 +6,8 @@ Xpra allows you to use the speed of X-forwarding (a bit faster even) and the det
 
 ## Tags
 
-* [latest](https://github.com/ngaro/xpra-chromium/blob/master/Dockerfile) uses Ubuntu as base
-* [alpine](https://github.com/ngaro/xpra-chromium/blob/alpine/Dockerfile) uses Alpine as base
+* [latest](https://github.com/ngaro/xpra-chromium/blob/master/Dockerfile) uses Alpine as base
+* [ubuntu](https://github.com/ngaro/xpra-chromium/blob/ubuntu/Dockerfile) uses Ubuntu as base
 
 ## XPRA Usage
 
@@ -15,7 +15,7 @@ To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for 
 
 * Run the container:
 
-`docker run -d -p 12345:10000 --device /dev/snd --name xprachro garo/xpra-chromium`
+`docker run -d -p 12345:10000 --name xprachro -v /dev/shm:/dev/shm --device /dev/snd garo/xpra-chromium`
 
 * Wait a couple of seconds for everything to start...
 
@@ -26,6 +26,15 @@ To run Chromium on 'chroserver' listening for xpra-connections on tcp/12345 for 
 * Closing Chromium will also stop the container. With `docker start xprachro` it will start again.
 
 The environment variable `XPRA_PORT` is `10000` by default but can be changed to make xpra listen to another port.
+
+## Regular (local) usage
+
+You can also use this to run chromium locally in a container:
+
+```
+docker run -d --net host -e DISPLAY=$DISPLAY --rm -v /dev/shm:/dev/shm \
+--device /dev/snd -v $HOME/.Xauthority:/root/.Xauthority garo/xpra-chromium chromium
+```
 
 ## Wireshark https traffic sniffing
 
