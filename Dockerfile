@@ -1,4 +1,4 @@
-FROM garo/easy-xpra:alpine
+FROM garo/easy-xpra:latest
 MAINTAINER Nikolas Garofil "nikolas@garofil.be"
 
 #Install chromium, everything is on 1 layer to shrink image size (e.g. cleaning the apt cache on a new layer is pretty useless because the layer before still contains this data)
