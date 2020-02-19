@@ -6,7 +6,7 @@ Xpra allows you to use the speed of X-forwarding (a bit faster even) and the det
 
 ## Tags
 
-* [latest](https://github.com/ngaro/xpra-chromium/blob/master/Dockerfile) uses Alpine as base
+* [latest](https://github.com/ngaro/xpra-chromium/blob/latest/Dockerfile) uses Alpine as base
 * [ubuntu](https://github.com/ngaro/xpra-chromium/blob/ubuntu/Dockerfile) uses Ubuntu as base
 
 ## XPRA Usage
